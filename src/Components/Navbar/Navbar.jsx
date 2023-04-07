@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styles from'./Navbar.module.css'
 import { Link } from 'react-router-dom'
 import logo from'../../assets/freshcart-logo.svg'
+
 export default function Navbar({userData, logOut}) {
+
+
   return <>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
@@ -16,17 +19,21 @@ export default function Navbar({userData, logOut}) {
         <li class="nav-item">
           <Link class="nav-link active" aria-current="page" to="/">Home</Link>
         </li>
-        <li class="nav-item">
+        {/* <li class="nav-item">
           <Link class="nav-link" to="products">Products</Link>
-        </li>
+        </li> */}
         <li class="nav-item">
+        
           <Link class="nav-link" to="cart">Cart</Link>
         </li>
         <li class="nav-item">
           <Link class="nav-link" to="brands">Brands</Link> 
         </li>
-        <li class="nav-item">
+        {/* <li class="nav-item">
           <Link class="nav-link" to="categories">Categories</Link>
+        </li> */}
+        <li class="nav-item">
+          <Link  className="nav-link" to="wishlist">WishList <i className='fas fa-heart'></i></Link>
         </li>
         
       </ul>: null}

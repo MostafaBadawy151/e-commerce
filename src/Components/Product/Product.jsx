@@ -1,10 +1,14 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import styles from'./Product.module.css'
 import Slider from 'react-slick';
+import { CartContext } from '../../Context/CartContext';
+import { toast } from 'react-hot-toast';
+
 
 export default function Product() {
+  let {addToCart} = useContext(CartContext)
 const params = useParams();
 const [Details, setDetails] = useState(null)
 const [isloading, setisloading] = useState(false)
@@ -15,6 +19,16 @@ const settings = {
   slidesToShow: 3,
   slidesToScroll: 3
 };
+
+async function addProductToCart(productId) {
+  let response = await addToCart(productId);
+  if(response.data.status == 'success'){
+    toast.success(response.data.message, {duration:3000, className:'text-center border-success', position:'bottom-left'})
+  }
+  else{
+    toast.error('Error')
+  }
+}
 
 async function getProductDetails() {
   setisloading(true)
@@ -35,12 +49,12 @@ useEffect(() => {
       <div className="col-md-8">
         <p>{Details?.title}</p>
         <p className='text-black-50'>{Details?.description}</p>
-        <h6>{Details?.category.name}</h6>
+        <h6>{Details?.category.name}</h6> 
         <div className='d-flex justify-content-between'>
           <span>{Details?.price}EGP</span>
           <span><i class="fa-solid fa-star text-warning"></i>{Details?.ratingsAverage}</span>
         </div>
-        <button className='btn btn-success w-100 bg-main'>+ add to cart</button>
+        <button onClick={()=>addProductToCart(Details?.id)} className='btn btn-success w-100 bg-main'>+ add to cart</button>
       </div>
     </div>
     <div className="row">

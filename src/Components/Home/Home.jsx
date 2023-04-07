@@ -8,6 +8,9 @@ import slider2 from '../../assets/slider-image-2.jpeg'
 import slider3 from '../../assets/slider-image-3.jpeg'
 import side1 from '../../assets/grocery-banner-2.jpeg'
 import side2 from '../../assets/slider-2.jpeg'
+import { Helmet } from 'react-helmet'
+
+
 var settings = {
   dots: true,
   infinite: false,
@@ -65,6 +68,9 @@ export default function Home() {
   }, [])
   
   return <>
+   <Helmet>
+    <title>Home</title>
+  </Helmet>
 
     <div className="container">
     {isloading?<div className='loading'><i className='fas fa-spinner fa-spin text-main fa-3x'></i></div>:<>

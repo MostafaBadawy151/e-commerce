@@ -4,6 +4,8 @@ import styles from'./Register.module.css'
 import * as Yup from 'yup';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet'
+
 
 export default function Register() {
 const [isloading, setisloading] = useState(false);
@@ -79,6 +81,9 @@ const [messageError, setmessageError] = useState('')
     onSubmit:handleRegister
   })
   return <>
+  <Helmet>
+    <title>Register</title>
+  </Helmet>
     <div className='w-75 mx-auto py-4'>
         <h3>Register Now</h3>
         {messageError?<div className="alert alert-danger">{messageError}</div>:null}

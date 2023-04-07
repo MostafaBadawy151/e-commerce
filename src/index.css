@@ -76,4 +76,31 @@ a , a:hover{
 .item{
     cursor: pointer;
 }
+.border-main{
+    border: 1px solid var(--main-color);
+}
 
+.network{
+    padding: 10px;
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    box-shadow: var(--shadow);
+    background-color: #fff;
+    z-index: 99999;
+}
+.wish:hover{
+    color: red;
+}
+.clear{
+    position: absolute;
+    right: 20px;
+    top: 30px;
+
+}
+
+.paid{
+    box-shadow: 5px 5px 5px gray;
+    height: fit-content;
+    /* margin-bottom: 10px !important; */
+}

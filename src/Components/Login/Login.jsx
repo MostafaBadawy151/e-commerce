@@ -4,6 +4,8 @@ import styles from'./Login.module.css'
 import * as Yup from 'yup';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet'
+
 
 export default function Login({saveUserData}) {
 const [isloading, setisloading] = useState(false);
@@ -40,6 +42,9 @@ const [messageError, setmessageError] = useState('')
     onSubmit:handleLogin
   })
   return <>
+  <Helmet>
+    <title>Login</title>
+  </Helmet>
     <div className='w-75 mx-auto py-4'>
         <h3>Login Now</h3>
         {messageError?<div className="alert alert-danger">{messageError}</div>:null}
